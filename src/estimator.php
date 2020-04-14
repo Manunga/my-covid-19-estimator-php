@@ -3,16 +3,18 @@
 function covid19ImpactEstimator($data)
 {
   $decodeData = json_decode(trim(file_get_contents("php://input")));
+  
+  return [
+  $timeToElapse = $decodeData->timeToElapse,
+  $periodType = $decodeData->periodType,
+  $reportedCases = $decodeData->reportedCases,
+  $population = $decodeData->population,
+  $totalHospitalBeds = $decodeData->totalHospitalBeds,
+  $avgDailyIncomeInUSD = $decodeData->region->avgDailyIncomeInUSD,
 
-  $timeToElapse = $decodeData->timeToElapse;
-  $periodType = $decodeData->periodType;
-  $reportedCases = $decodeData->reportedCases;
-  $population = $decodeData->population;
-  $totalHospitalBeds = $decodeData->totalHospitalBeds;
-  $avgDailyIncomeInUSD = $decodeData->region->avgDailyIncomeInUSD;
-
-  $impactCurrentlyInfected = $decodeData->reportedCases * 10;
-  $severeImpactCurrentlyInfected = $decodeData->reportedCases * 50;
+  $impactCurrentlyInfected = $decodeData->reportedCases * 10,
+  $severeImpactCurrentlyInfected = $decodeData->reportedCases * 50,
+  ];
 
   if ($periodType === 'days')
   {
