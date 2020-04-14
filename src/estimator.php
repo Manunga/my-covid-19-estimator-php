@@ -2,7 +2,7 @@
 
 function covid19ImpactEstimator($data)
 {
-  $decodeData = json_decode(trim(file_get_contents($data)));
+  $decodeData = json_decode(trim(file_get_contents("php://input")));
 
   $timeToElapse = $decodeData->timeToElapse;
   $periodType = $decodeData->periodType;
